@@ -1,13 +1,20 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from "@angular/core";
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
+  // template: `<p>Hello world</p>`,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  // styles: []
 })
 export class AppComponent {
-  title = 'basics';
+  name = 'Quang Duong'
+  imgURL = 'https://picsum.photos/id/237/500/500'
+
+  getName() { return this.name }
+
+  changeImage(e: KeyboardEvent) {
+    this.imgURL = (e.target as HTMLInputElement).value
+  }
+
 }
