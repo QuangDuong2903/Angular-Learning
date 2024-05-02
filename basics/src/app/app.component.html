@@ -4,9 +4,14 @@
 
 <p *ngIf="blueClass">Button is blue</p>
 
+<!-- <p>{{ num }}</p> -->
+
 <button (click)="blueClass = !blueClass" [ngClass]="{ blue: blueClass }" [ngStyle]="{ 'font-size.px': fontSize}">
     Change
 </button>
+
+<app-num [(num)]="count"></app-num>
+<p>{{ count }} times</p>
 
 <hr>
 

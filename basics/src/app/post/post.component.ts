@@ -15,26 +15,28 @@ export class PostComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
     console.log('constructor() called', this.postImg)
   }
   ngOnDestroy(): void {
-    console.log('ngOnDestroy() called')
+    // console.log('ngOnDestroy() called')
   }
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit() called')
+    // console.log('ngAfterViewInit() called')
   }
   ngAfterViewChecked(): void {
-    console.log('ngAfterViewChecked() called')
+    // console.log('ngAfterViewChecked() called')
   }
   ngAfterContentChecked(): void {
     console.log('ngAfterContentChecked() called')
     
   }
   ngAfterContentInit(): void {
-    console.log('ngAfterContentInit() called')
+    // console.log('ngAfterContentInit() called')
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges() called')
+    console.log(changes)
+    
   }
   ngDoCheck(): void {
-    console.log('ngDoChekck() called')
+    // console.log('ngDoChekck() called')
   }
   ngOnInit(): void {
     console.log('ngOnInit() called', this.postImg)
