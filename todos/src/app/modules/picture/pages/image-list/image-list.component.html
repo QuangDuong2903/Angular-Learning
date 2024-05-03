@@ -1,0 +1,13 @@
+<ng-template #loading>
+  <div class="w-100 d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+<div *ngIf="images.length > 0; else loading" class="row">
+  <div class="col-sm-3" *ngFor="let image of images">
+    <app-image-card [img]="image"></app-image-card>
+  </div>
+</div>
