@@ -5,13 +5,15 @@ import { PictureRoutingModule } from './picture-routing.module';
 import { ImageDetailComponent } from './pages/image-detail/image-detail.component';
 import { ImageListComponent } from './pages/image-list/image-list.component';
 import { ImageCardComponent } from './pages/image-list/image-card/image-card.component';
+import { EditImageComponent } from './pages/edit-image/edit-image.component';
 
 
 @NgModule({
   declarations: [
     ImageDetailComponent,
     ImageListComponent,
-    ImageCardComponent
+    ImageCardComponent,
+    EditImageComponent
   ],
   imports: [
     CommonModule,

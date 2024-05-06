@@ -2,4 +2,6 @@
   <h1>Id {{ this.img?.id }}</h1>
   <h1>Author {{ this.img?.author }}</h1>
   <img style="height: 80rem; width: 100%" [src]="img?.download_url" alt="" />
+  <button routerLink="edit" type="button" class="btn btn-primary">Edit</button>
+  <button type="button" class="btn btn-success" (click)="next()">Next</button>
 </div>
