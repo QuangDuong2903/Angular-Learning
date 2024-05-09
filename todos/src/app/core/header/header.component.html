@@ -20,12 +20,26 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/pictures" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Pictures</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/todos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Todos</a>
-        </li>
+        <ng-container *ngIf="!authService.isAuthenticate(); else auth">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/sign-in" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/sign-up" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Sign Up</a>
+          </li>
+        </ng-container>
+        <ng-template #auth>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/todos" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Todos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/posts" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Posts</a>
+          </li>
+        </ng-template>
       </ul>
       <form class="d-flex" role="search">
         <input
+          #search
           class="form-control me-2"
           type="search"
           placeholder="Search"

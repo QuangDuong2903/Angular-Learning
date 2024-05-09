@@ -1,0 +1,67 @@
+<form [formGroup]="createPostForm" class="m-5" (ngSubmit)="createPost()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input [formControl]="name" type="text" class="form-control" id="name" />
+    <p
+      class="text-danger"
+      *ngIf="name.touched && name.dirty && name.errors?.['required']"
+    >
+      Name is required
+    </p>
+  </div>
+  <div class="mb-3">
+    <label for="thumbnail" class="form-label">Thumbnail</label>
+    <select [formControl]="thumbnail" id="thumbnail" class="form-select">
+      <option value="">Choose thumbnail</option>
+      <option *ngFor="let img of images" style="width: 10rem; height: 5rem" [ngValue]="img.download_url">
+        {{ img.download_url }}
+      </option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="content" class="form-label">Content</label>
+    <input
+      [formControl]="content"
+      type="text"
+      class="form-control"
+      id="content"
+    />
+    <p
+      class="text-danger"
+      *ngIf="content.touched && content.dirty && content.errors?.['required']"
+    >
+      Content is required
+    </p>
+  </div>
+  <div class="mb-3">
+    <label for="category" class="form-label">Category</label>
+    <select [formControl]="category" id="category" class="form-select">
+      <option value="">Choose category</option>
+      <option *ngFor="let category of categories" style="width: 10rem; height: 5rem" [ngValue]="category.id">
+        {{ category.name }}
+      </option>
+    </select>
+  </div>
+  <button
+    [disabled]="createPostForm.invalid"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Create post
+  </button>
+</form>
+<div *ngIf="images.length == 0 && categories.length == 0"
+  style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  "
+>
+  <div class="spinner-border m-5"></div>
+</div>
