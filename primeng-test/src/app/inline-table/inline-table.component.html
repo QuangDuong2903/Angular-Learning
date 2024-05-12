@@ -1,0 +1,132 @@
+<div class="ba-inline-table-container bg-white" *ngIf="inputForm">
+    <form name="inputForm" class="form d-block border-0" role="form" novalidate [formGroup]="inputForm">
+        <div class="row ba-table-container">
+            <!-- form array ==> p-table -->
+            <p-table [value]="formArrayControl" class="p-0">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th *ngFor="let th of tableColumns; let i = index" scope="col"
+                            [style.min-width]="th!.width + 'px'">
+                            <div *ngIf="th.headerText?.length" class="d-inline">
+                                <span>{{ th.headerText }}</span>
+                            </div>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowFormGroup let-rowIndex="rowIndex">
+                    <div>
+                      <button
+                        type="button"
+                        class="d-flex justify-content-between align-content-center d-sm-none w-100 ba-expand-form-info-btn mb-3"
+                        aria-controls="collapseExample"
+                      >
+                        <span>{{ rowIndex + 1 }}</span>
+                        <!-- <img class="d-block my-auto" src="{{ '' | asset }}content/images/up_arrow_icon.svg" alt="" /> -->
+                      </button>
+                    </div>
+                    <tr [formGroup]="rowFormGroup" [(ngbCollapse)]="formGroupDetailCollapse[rowIndex]">
+                      <td *ngFor="let cellElement of formArray[rowIndex]; let formArrayIndex = index" [ngClass]="cellElement.name">
+                        <label class="d-sm-none d-block ba-body-2-regular"></label>
+                        <!-- Phone field -->
+                        <div *ngIf="cellElement.dataType == 'phone'" [class]="cellElement.styleClass ?? ''">
+                          <!-- <ba-phone-input
+                            [phoneGroup]="rowFormGroup.controls[cellElement.name]"
+                            [showLabel]="false"
+                            [customStyle]="'ba-input-phone-for-table'"
+                          ></ba-phone-input> -->
+                        </div>
+                        <!-- Date field -->
+                        <div *ngIf="cellElement.dataType == 'date'">
+                          <p-calendar
+                            [formControlName]="cellElement.name"
+                            appendTo="body"
+                          >
+                          </p-calendar>
+                        </div>
+                        <!-- Text field -->
+                        <div *ngIf="cellElement.dataType == 'text'">
+                          <input
+                            [class]="cellElement.styleClass ?? ''"
+                            class="input-field p-inputtext text-truncate"
+                            [id]="cellElement.name"
+                            type="text"
+                            [formControlName]="cellElement.name"
+                            [placeholder]="cellElement.placeholder"
+                          />
+                        </div>
+                        <!-- Selection field -->
+                        <div *ngIf="cellElement.dataType == 'selection'">
+                          <!-- The onClick event binding below is a workaround because the onClick event handler needs to be passed in on some pages, while it is not required on others. -->
+                          <p-dropdown
+                            (onClick)="getOnClickHandlerForDropDown(cellElement.selectionOptions)()"
+                          >
+                            <ng-template let-selectedItem pTemplate="selectedItem">
+                              <span class="item-show">
+                                {{
+                                  cellElement.selectionOptions?.translationPrefix ?? ''
+                                    ? (getDropdownOptionItem(cellElement, selectedItem))
+                                    : getDropdownOptionItem(cellElement, selectedItem)
+                                }}</span
+                              >
+                            </ng-template>
+                            <ng-template let-item pTemplate="item">
+                              <div class="item" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis">
+                                <span>
+                                  {{
+                                    cellElement.selectionOptions?.translationPrefix ?? ''
+                                      ? (getDropdownOptionItem(cellElement, item))
+                                      : getDropdownOptionItem(cellElement, item)
+                                  }}</span
+                                >
+                                <!-- <img
+                                  *ngIf="item === inputForm.value![cellElement.name]"
+                                  src="{{ '' | asset }}content/images/fi_tick_circle_blue.svg"
+                                  alt="Tick"
+                                /> -->
+                              </div>
+                            </ng-template>
+                          </p-dropdown>
+                        </div>
+                        <!-- Autocomplete field -->
+                        <div *ngIf="cellElement.dataType == 'autocomplete'">
+                          <p-autoComplete
+                          >
+                            <ng-template let-item pTemplate="item">
+                              <div>
+                                {{ item[cellElement.autocompleteOptions?.optionDisplayname ?? ''] }}
+                              </div>
+                            </ng-template>
+                            <ng-template let-item pTemplate="selectedItem">
+                              <div
+                                *ngIf="
+                                  !item[cellElement.autocompleteOptions?.optionDisplayname ?? ''] ||
+                                    item[cellElement.autocompleteOptions?.optionDisplayname ?? ''] == 'All';
+                                  else airlineElse
+                                "
+                              >
+                                
+                              </div>
+                              <ng-template #airlineElse>
+                                {{
+                                  item[
+                                    cellElement.autocompleteOptions?.optionSelectedDisplayname ??
+                                      cellElement.autocompleteOptions?.optionDisplayname ??
+                                      ''
+                                  ]
+                                }}
+                              </ng-template>
+                            </ng-template>
+                          </p-autoComplete>
+                        </div>
+          
+                        <!-- errors message here -->
+                        <!-- <div *ngIf="formErrorService.isShownErrorMessage(rowFormGroup, cellElement.name)">
+                          <small class="form-text"> </small>
+                        </div> -->
+                      </td>
+                    </tr>
+                  </ng-template>
+            </p-table>
+        </div>
+    </form>
+</div>

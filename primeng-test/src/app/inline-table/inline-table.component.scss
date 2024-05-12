@@ -1,0 +1,245 @@
+// @import 'content/scss/ba-common';
+// @import 'bootstrap/scss/mixins/breakpoints';
+
+// $ba-table-border: 1px solid $ba-neutrals-06;
+// $ba-input-border-radius: 10px;
+// $ba-placeholder-color: #768085;
+// $ba-cell-padding: 0.5rem 0.25rem;
+// $ba-table-input-padding: 0.75rem 0.25rem;
+// $ba-table-input-radius: 6px;
+// $ba-table-header-padding: 0.5rem;
+// $ba-error-border: 1px solid #e24c4c;
+// $ba-text-font-size-fold: 0.75rem;
+
+// .ba-inline-table-container {
+//     border-radius: $ba-input-border-radius;
+
+//     ::ng-deep {
+
+//         .p-inputtext,
+//         .p-dropdown,
+//         .p-calendar,
+//         .p-autocomplete .p-element {
+//             width: 100%;
+//             border-radius: $ba-input-border-radius;
+//             @extend .ba-attribute-regular;
+//         }
+
+//         .p-inputtext.ng-dirty.ng-invalid {
+//             border: $ba-error-border !important;
+//         }
+
+//         .p-dropdown-label.p-inputtext.p-placeholder {
+//             color: $ba-placeholder-color !important;
+//         }
+
+//         .p-dropdown .p-dropdown-label {
+//             white-space: nowrap;
+//             overflow: hidden;
+//             text-overflow: ellipsis;
+//         }
+
+//         @include media-breakpoint-down(ba-search-box-container-sm) {
+
+//             .p-inputtext,
+//             .p-dropdown,
+//             .p-calendar,
+//             .p-autocomplete .p-element {
+//                 font-size: $ba-text-font-size-fold;
+//             }
+
+//             .p-dropdown-item {
+//                 span {
+//                     font-size: $ba-text-font-size-fold;
+//                 }
+//             }
+
+//             .p-dropdown .p-dropdown-label {
+//                 font-size: $ba-text-font-size-fold;
+//             }
+//         }
+//     }
+
+//     .ba-previous-position {
+//         order: 1;
+//     }
+
+//     .ba-behind-position {
+//         order: 2;
+//     }
+
+//     .ba-table-container {
+//         ::ng-deep {
+//             .p-datatable-wrapper {
+//                 overflow: unset;
+//             }
+
+//             thead {
+//                 display: none;
+
+//                 th {
+//                     background-color: $ba-neutrals-07;
+//                     @extend .ba-attribute-regular;
+//                     color: $ba-neutrals-01;
+//                 }
+//             }
+
+//             tbody {
+//                 tr {
+//                     display: flex;
+//                     flex-direction: column;
+//                 }
+
+//                 td {
+//                     display: block;
+//                     border: none;
+//                     padding: 0 0 0.5rem;
+//                 }
+
+//                 label {
+//                     color: $ba-neutrals-03;
+//                     margin-bottom: 0.25rem;
+//                 }
+
+//                 @include media-breakpoint-down(ba-search-box-container-sm) {
+//                     label {
+//                         font-size: $ba-text-font-size-fold;
+//                     }
+//                 }
+//             }
+//         }
+
+//         small {
+//             display: block;
+//             color: $ba-semantic-01;
+//         }
+
+//         .ba-expand-form-info-btn {
+//             padding: 0.75rem;
+//             border-radius: 10px;
+//             background-color: $ba-neutrals-07;
+//             border: none;
+//             @extend .ba-attribute-regular;
+//         }
+
+//         .collapse:not(.show) {
+//             display: none !important;
+//         }
+
+//         .collapsing {
+//             transition: height 0.35s ease;
+//         }
+
+//         .ba-expand-form-info-btn:not(.show) {
+//             img {
+//                 transform: rotate(180deg);
+//             }
+//         }
+//     }
+
+//     @include media-breakpoint-down(ba-search-box-container-sm) {
+//         .ba-table-container {
+//             .ba-expand-form-info-btn {
+//                 font-size: $ba-text-font-size-fold;
+//             }
+//         }
+//     }
+
+//     @include media-breakpoint-up(sm) {
+//         .ba-table-container {
+//             ::ng-deep {
+//                 .p-datatable-wrapper {
+//                     overflow: auto;
+//                 }
+
+//                 .p-inputtext {
+//                     padding: $ba-table-input-padding;
+//                 }
+
+//                 .p-inputtext,
+//                 .p-dropdown,
+//                 .p-calendar {
+//                     border: none;
+//                     border-radius: $ba-table-input-radius !important;
+//                 }
+
+//                 .p-dropdown-trigger {
+//                     display: none;
+//                 }
+
+//                 .p-inputtext:enabled:focus,
+//                 .p-dropdown:not(.p-disabled).p-focus,
+//                 .p-autocomplete .p-autocomplete-multiple-container:not(.p-disabled).p-focus,
+//                 .p-calendar:enabled:focus {
+//                     box-shadow: 0 0 0 1px $ba-neutrals-06;
+//                     z-index: 1;
+//                 }
+
+//                 thead {
+//                     display: table-header-group;
+
+//                     tr {
+//                         display: table-row;
+
+//                         th {
+//                             padding: $ba-table-header-padding;
+//                             padding-right: 0;
+//                         }
+//                     }
+//                 }
+
+//                 tbody {
+//                     td {
+//                         display: table-cell;
+//                         border-bottom: $ba-table-border;
+//                         max-width: 5.5rem;
+//                         padding: $ba-cell-padding;
+//                         vertical-align: top;
+//                     }
+
+//                     tr {
+//                         display: table-row;
+//                     }
+//                 }
+
+//                 .p-dropdown .p-dropdown-trigger {
+//                     width: 2rem;
+
+//                     .p-dropdown-trigger-icon {
+//                         transform: scale(0.8);
+//                     }
+//                 }
+//             }
+
+//             .collapse:not(.show) {
+//                 display: table-row !important;
+//             }
+//         }
+
+//         ::ng-deep {
+//             .ba-input-phone-for-table {
+//                 .ba-phone-number-wrapper {
+//                     .calling-code p-dropdown p-component {
+//                         min-width: 4.375rem;
+//                     }
+
+//                     .calling-code.p-dropdown .p-dropdown-trigger {
+//                         display: none;
+//                     }
+
+//                     .p-inputtext {
+//                         padding-left: 0.5rem;
+//                         padding-right: 0.5rem;
+//                         min-width: 4.375rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// ::ng-deep {
+//     .p-datepicker table thead {
+//         text-align: center;
+//     }
+// }
