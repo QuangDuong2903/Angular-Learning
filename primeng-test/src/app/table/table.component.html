@@ -1,0 +1,39 @@
+<div class="dtw-notification-container">
+    <div class="dtw-notification">
+        <div class="dtw-title" baTranslate="notification.title">Tất cả thông báo</div>
+        <div class="d-flex flex-row align-items-center header">
+            <div class="d-flex flex-row align-items-center w-100">
+                <div *ngFor="let tab of tabs" class="tab" [ngClass]="{'seleceted-tab': activeTab?.label === tab.label}" (click)="handleChangeTab(tab)">
+                    {{ tab.label }}
+                    <p-badge [value]="20" />
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center w-30">
+                <div class="mx-2" baTranslate="notification.orderBy.title" style="white-space: nowrap; display: inline-block;">Sắp xếp theo</div>
+                <p-dropdown [style]="{'width': '12rem', 'height': '2rem', 'display': 'flex', 'align-items':'center'}" [options]="['Mới nhất', 'Cũ nhất ']"></p-dropdown>
+            </div>
+        </div>
+
+        <div class="dtw-table">
+            <div class="d-flex align-items-center px-2 py-3">
+                <a style="text-decoration: underline" class="text-primary">Đánh dấu đã đọc tất cả</a>
+            </div>
+            
+            <p-table [value]="[1, 2, 3]">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th baTranslate="notification.sendDate">Ngày gửi</th>
+                  <th baTranslate="notification.content">Nội dung</th>
+                  <th></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-order>
+                <tr>
+
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+    </div>
+    <p>{{ pictureService.unreadCount$ | async | json }}</p>
+</div>

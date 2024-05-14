@@ -5,11 +5,12 @@ import { InlineTableColumn, TableColumn } from './shared/table-column.model';
 import { FORM_INPUT_TYPE, FormFieldDef } from './shared/form.model';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormService } from './shared/utils/form-service';
+import { TableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, InlineTableComponent],
+  imports: [RouterOutlet, InlineTableComponent, TableComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
