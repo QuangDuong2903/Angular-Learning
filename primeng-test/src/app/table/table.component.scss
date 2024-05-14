@@ -16,6 +16,24 @@ $ba-order-item-span-green-background: #f6ffed;
     color: black;
 }
 
+::ng-deep a.page-link {
+    background: transparent;
+    color: black;
+    border: none;
+    margin: 0 0.3rem;
+}
+
+::ng-deep li.active a.page-link {
+    background: transparent;
+    border: 2px solid blue;
+    color: blue;
+    border-radius: 20%;
+}
+
+::ng-deep li.disabled a.page-link {
+    background: transparent;
+}
+
 .dtw-notification-container {
     // background: $ba-dtw-background-color;
     overflow: auto;

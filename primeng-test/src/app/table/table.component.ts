@@ -7,9 +7,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, interval, switchMap } from 'rxjs';
+import { interval, switchMap } from 'rxjs';
 import { PictureService } from '../service/picture.service';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 interface Tab {
   label: string
@@ -18,7 +18,7 @@ interface Tab {
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [TabViewModule, AvatarModule, AvatarGroupModule, BadgeModule, DropdownModule, TabMenuModule, TableModule, CommonModule],
+  imports: [TabViewModule, AvatarModule, AvatarGroupModule, BadgeModule, DropdownModule, TabMenuModule, TableModule, CommonModule, NgbPaginationModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
@@ -26,6 +26,8 @@ export class TableComponent implements OnInit {
 
   tabs?: Tab[];
   activeTab?: Tab;
+
+  page: number = 1
 
   constructor(public pictureService: PictureService) {}
 
