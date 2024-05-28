@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup">
+    <!-- <ng-container *ngFor="let group of groups; let i = index">
+    </ng-container> -->
+    <div formArrayName="images">
+        <div class="ba-schedule-item p-2 mb-2 row" *ngFor="let control of ImagesFormArray.controls; let i = index"
+            [formGroupName]="i">
+            <input type="text" formControlName="description">
+            <input type="text" formControlName="image">
+        </div>
+        <button (click)="addTextWithImageItem()">Add image</button>
+    </div>
+</form>

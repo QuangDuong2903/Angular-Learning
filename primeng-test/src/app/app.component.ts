@@ -6,11 +6,12 @@ import { FORM_INPUT_TYPE, FormFieldDef } from './shared/form.model';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormService } from './shared/utils/form-service';
 import { TableComponent } from './table/table.component';
+import { MediaCollectionComponent } from './media-collection/media-collection.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, InlineTableComponent, TableComponent],
+  imports: [RouterOutlet, InlineTableComponent, TableComponent, MediaCollectionComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
